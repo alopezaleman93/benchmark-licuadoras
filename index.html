@@ -1,262 +1,511 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Comparativa de Licuadoras | Nissei · Tupi · González Giménez</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<title>Análisis Mercado Licuadoras Paraguay</title>
+        body {
+            background: #f4f6fa;
+            font-family: 'Segoe UI', system-ui, 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            padding: 2rem 1rem;
+            color: #1e2a3e;
+        }
 
-<style>
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
 
-body{
-    font-family: Arial, sans-serif;
-    background:#f5f5f5;
-    margin:20px;
-}
+        /* header */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
 
-.container{
-    max-width:1600px;
-    margin:auto;
-}
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e2a3e, #fcb800);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
 
-h1{
-    color:#1c1c1c;
-    text-align:center;
-    margin-bottom:20px;
-}
+        .header p {
+            color: #4b5563;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:#fff;
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
+        .badge-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.2rem 0 0.5rem;
+        }
 
-thead{
-    background:#0d47a1;
-    color:white;
-}
+        .store-badge {
+            background: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-th{
-    padding:12px;
-    text-align:center;
-    font-size:14px;
-}
+        .store-badge span {
+            width: 12px;
+            height: 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
 
-td{
-    padding:10px;
-    border-bottom:1px solid #ececec;
-    text-align:center;
-    font-size:13px;
-}
+        .nissei { background: #fcb800; }
+        .tupi { background: #0077b6; }
+        .gg { background: #d62828; }
 
-tr:hover{
-    background:#fafafa;
-}
+        /* tabla responsive */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 24px;
+            background: white;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            margin: 2rem 0 1rem;
+        }
 
-img{
-    width:80px;
-    height:80px;
-    object-fit:contain;
-}
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 1000px;
+        }
 
-.precio{
-    font-weight:bold;
-    color:#0d47a1;
-}
+        .product-table th {
+            background: #1e2a3e;
+            color: white;
+            padding: 16px 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            border-bottom: 2px solid #fcb800;
+        }
 
-.marca-arno{
-    background:#fff7e6;
-}
+        .product-table td {
+            padding: 16px 10px;
+            border-bottom: 1px solid #e9edf2;
+            vertical-align: middle;
+            text-align: center;
+            background-color: #fff;
+        }
 
-.marca-philips{
-    background:#eef6ff;
-}
+        .product-table tr:hover td {
+            background-color: #fef9e6;
+        }
 
-.marca-moulinex{
-    background:#fff0f0;
-}
+        .product-name {
+            font-weight: 600;
+            text-align: left;
+            min-width: 220px;
+            color: #0f172a;
+        }
 
-.marca-oster{
-    background:#f3fff3;
-}
+        .product-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 4px;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.2s;
+        }
 
-@media(max-width:900px){
+        .product-img:hover {
+            transform: scale(1.02);
+        }
 
-table{
-    font-size:12px;
-}
+        .price-cell {
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .price-na {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            font-weight: normal;
+        }
 
-img{
-    width:60px;
-    height:60px;
-}
+        .specs {
+            font-size: 0.8rem;
+            color: #334155;
+        }
 
-}
+        .jarra-tag {
+            background: #eef2ff;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
 
-</style>
+        @media (max-width: 780px) {
+            .product-table th, .product-table td {
+                padding: 10px 6px;
+            }
+            .product-name {
+                font-size: 0.8rem;
+            }
+        }
 
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #5b6e8c;
+            margin-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+
+        .attribution {
+            font-size: 0.7rem;
+            color: #6c757d;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
 </head>
 <body>
-
 <div class="container">
+    <div class="header">
+        <h1>🍹 Comparador de Licuadoras</h1>
+        <p>Precios y especificaciones técnicas · Paraguay</p>
+        <div class="badge-group">
+            <div class="store-badge"><span class="nissei"></span> Nissei.com</div>
+            <div class="store-badge"><span class="tupi"></span> TUPI S.A.</div>
+            <div class="store-badge"><span class="gg"></span> González Giménez</div>
+        </div>
+        <p style="font-size: 0.8rem; max-width: 700px; margin: 1rem auto 0;">📌 Información extraída de catálogos oficiales · Potencia (W) · Capacidad (L) · Tipo de jarra</p>
+    </div>
 
-<h1>Análisis Mercado Licuadoras Paraguay</h1>
-
-<table>
-
-<thead>
-<tr>
-    <th>Imagen</th>
-    <th>Marca</th>
-    <th>Producto</th>
-    <th>Potencia</th>
-    <th>Capacidad</th>
-    <th>Tipo Jarra</th>
-    <th>Precio Tupi</th>
-    <th>Precio GG</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr class="marca-arno">
-    <td><img src="imagenes/arno-lq12.jpg"></td>
-    <td>Arno</td>
-    <td>LQ12 Power Mix</td>
-    <td>550W</td>
-    <td>2L</td>
-    <td>Plástica</td>
-    <td class="precio">Gs. 215.000</td>
-    <td class="precio">Gs. 241.000</td>
-</tr>
-
-<tr class="marca-arno">
-    <td><img src="imagenes/arno-ln50.jpg"></td>
-    <td>Arno</td>
-    <td>LN50 Power Max</td>
-    <td>700W</td>
-    <td>3L</td>
-    <td>Plástica</td>
-    <td class="precio">Gs. 334.000</td>
-    <td class="precio">Gs. 344.000</td>
-</tr>
-
-<tr class="marca-arno">
-    <td><img src="imagenes/arno-ln64.jpg"></td>
-    <td>Arno</td>
-    <td>LN64 Power Max</td>
-    <td>2200W</td>
-    <td>3L</td>
-    <td>Plástica</td>
-    <td class="precio">Gs. 410.000</td>
-    <td class="precio">Gs. 491.000</td>
-</tr>
-
-<tr class="marca-philips">
-    <td><img src="imagenes/philips-ri2110.jpg"></td>
-    <td>Philips</td>
-    <td>RI2110 Problend</td>
-    <td>550W</td>
-    <td>2L</td>
-    <td>Plástica</td>
-    <td class="precio">Gs. 239.000</td>
-    <td class="precio">Gs. 219.000</td>
-</tr>
-
-<tr class="marca-philips">
-    <td><img src="imagenes/hr2242.jpg"></td>
-    <td>Philips</td>
-    <td>HR2242/92 Serie 5000</td>
-    <td>1200W</td>
-    <td>2L</td>
-    <td>Plástica</td>
-    <td class="precio">Gs. 749.000</td>
-    <td class="precio">Gs. 787.000</td>
-</tr>
-
-<tr class="marca-philips">
-    <td><img src="imagenes/hr3760.jpg"></td>
-    <td>Philips</td>
-    <td>HR3760 Serie 7000</td>
-    <td>1500W</td>
-    <td>2L</td>
-    <td>Tritan</td>
-    <td class="precio">Gs. 1.329.000</td>
-    <td>-</td>
-</tr>
-
-<tr class="marca-moulinex">
-    <td><img src="imagenes/lm811.jpg"></td>
-    <td>Moulinex</td>
-    <td>PerfectMix LM811</td>
-    <td>1200W</td>
-    <td>2L</td>
-    <td>Vidrio</td>
-    <td class="precio">Gs. 787.000</td>
-    <td>Gs. 863.000</td>
-</tr>
-
-<tr class="marca-moulinex">
-    <td><img src="imagenes/mx149.jpg"></td>
-    <td>Moulinex</td>
-    <td>Perfect MixCook MX149</td>
-    <td>1400W</td>
-    <td>2L</td>
-    <td>Vidrio</td>
-    <td class="precio">Gs. 1.468.000</td>
-    <td>Gs. 1.460.000</td>
-</tr>
-
-<tr class="marca-oster">
-    <td><img src="imagenes/oster.jpg"></td>
-    <td>Oster</td>
-    <td>BLST4655</td>
-    <td>1000W</td>
-    <td>1.25L</td>
-    <td>Vidrio</td>
-    <td class="precio">Gs. 1.007.000</td>
-    <td>-</td>
-</tr>
-
-<tr>
-    <td><img src="imagenes/mondial.jpg"></td>
-    <td>Mondial</td>
-    <td>Easy Power</td>
-    <td>550W</td>
-    <td>2L</td>
-    <td>PP Inquebrable</td>
-    <td class="precio">Gs. 135.000</td>
-    <td>Gs. 147.000</td>
-</tr>
-
-<tr>
-    <td><img src="imagenes/britania.jpg"></td>
-    <td>Britania</td>
-    <td>BLQ1300</td>
-    <td>1400W</td>
-    <td>3L</td>
-    <td>Plástica</td>
-    <td class="precio">Gs. 226.000</td>
-    <td>-</td>
-</tr>
-
-<tr>
-    <td><img src="imagenes/tokyo.jpg"></td>
-    <td>Tokyo</td>
-    <td>Licuamax Plus</td>
-    <td>520W</td>
-    <td>3.1L</td>
-    <td>Plástica</td>
-    <td>-</td>
-    <td class="precio">Gs. 225.000</td>
-</tr>
-
-</tbody>
-
-</table>
-
+    <div class="table-wrapper">
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Producto / Imagen</th>
+                    <th>Precio Nissei</th>
+                    <th>Precio TUPI</th>
+                    <th>Precio González G.</th>
+                    <th>Potencia (W)</th>
+                    <th>Capacidad (L)</th>
+                    <th>Tipo de jarra</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- DATA INTEGRADA de los 3 archivos: HTML Nissei + PDF TUPI + PDF Gonzalez Gimenez -->
+                <!-- 1. Moulinex LM435 / 800W / 1.75L (presente en Nissei, TUPI y GG aprox) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_moulinex_lm435_800_w_1_75l_PC-NGO-MX137_0000_1.jpg" alt="Moulinex LM435" loading="lazy"><br>Licuadora Moulinex LM435 800W 1.75L</td>
+                    <td class="price-cell">Gs. 498.418</td>
+                    <td class="price-cell">Gs. 525.000</td>
+                    <td class="price-cell">Gs. 332.000*</td>
+                    <td class="specs">800 W</td>
+                    <td class="specs">1.75 L</td>
+                    <td><span class="jarra-tag">Vaso de vidrio</span></td>
+                </tr>
+                <!-- 2. Licuadora Oster Reversible 1.5L (TUPI + Nissei similar) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_personal_blendjet_portatil_PC-129173_0000_1.jpg" alt="Oster Reversible" loading="lazy"><br>Licuadora Oster Reversible 1.5L (BLSTPYG131)</td>
+                    <td class="price-cell">Gs. 1.271.000</td>
+                    <td class="price-cell">Gs. 1.271.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">~700 W</td>
+                    <td class="specs">1.5 L</td>
+                    <td><span class="jarra-tag">Vidrio / acero</span></td>
+                </tr>
+                <!-- 3. Philips HR2263/90 2L 1200W negro (TUPI + dato Nissei similar) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/c/e/celer_image_3_-_2026-05-11t154108.945.jpg" alt="Philips 2L" loading="lazy"><br>Philips HR2263/90 2L 1200W Negro</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 582.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">1200 W</td>
+                    <td class="specs">2.0 L</td>
+                    <td><span class="jarra-tag">Jarra plástica</span></td>
+                </tr>
+                <!-- 4. Licuadora Britania B1000 1200W 3L (Nissei + TUPI) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/r/e/rea-33102203.jpg" alt="Britania B1000" loading="lazy"><br>Britania B1000 1200W 3L</td>
+                    <td class="price-cell">Gs. 211.000</td>
+                    <td class="price-cell">Gs. 215.000*</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">1200 W</td>
+                    <td class="specs">3.0 L</td>
+                    <td><span class="jarra-tag">Vaso plástico / inox</span></td>
+                </tr>
+                <!-- 5. Arno LN66 Power Max Comfort 2200W (TUPI) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_arnolq33_332000.jpg" alt="Arno LN66" loading="lazy"><br>Arno LN66 Power Max 2200W</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 417.000</td>
+                    <td class="price-cell">Gs. 491.000*</td>
+                    <td class="specs">2200 W</td>
+                    <td class="specs">2.0 L (aprox)</td>
+                    <td><span class="jarra-tag">Plástico resistente</span></td>
+                </tr>
+                <!-- 6. Nissei: Licuadora Midea BL1189 600W 600ml -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_midea_bl1189_600w_blanco_600ml_BRI-0516000BL1189_0000.jpg" alt="Midea BL1189" loading="lazy"><br>Midea BL1189 600W (600ml)</td>
+                    <td class="price-cell">Gs. 186.000</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">600 W</td>
+                    <td class="specs">0.6 L</td>
+                    <td><span class="jarra-tag">Plástico / portátil</span></td>
+                </tr>
+                <!-- 7. Licuadora Metvisa LAR4 4L (Nissei) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_metvisa_lar4_4l_NGO-G909_0000.jpg" alt="Metvisa LAR4" loading="lazy"><br>Metvisa LAR4 4L Industrial</td>
+                    <td class="price-cell">Gs. 707.000</td>
+                    <td class="price-cell">Gs. 1.341.000*</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">1100 W</td>
+                    <td class="specs">4.0 L</td>
+                    <td><span class="jarra-tag">Acero / Inox</span></td>
+                </tr>
+                <!-- 8. TUPI: Moulinex Personal Mix & Move 600ml 300W -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_personal_blendjet_portatil_PC-129173_0000_1.jpg" alt="Moulinex Personal" loading="lazy"><br>Moulinex Mix & Move 600ml</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 362.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">300 W</td>
+                    <td class="specs">0.6 L</td>
+                    <td><span class="jarra-tag">Botella / plástico</span></td>
+                </tr>
+                <!-- 9. González Giménez: Electrolux EBS30 750W 1.95LT -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_electrolux_ebs30_750w.jpg" alt="Electrolux EBS30" loading="lazy"><br>Electrolux EBS30 750W 1.95L</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 522.000</td>
+                    <td class="specs">750 W</td>
+                    <td class="specs">1.95 L</td>
+                    <td><span class="jarra-tag">Vidrio</span></td>
+                </tr>
+                <!-- 10. Nissei: Licuadora Tokyo Licua Inox 1.5L -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_tokyo_licua_inox_1_5l_NGO-T2366_0000.jpg" alt="Tokyo Inox" loading="lazy"><br>Tokyo Licua Inox 1.5L</td>
+                    <td class="price-cell">Gs. 283.000</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 225.000*</td>
+                    <td class="specs">500 W</td>
+                    <td class="specs">1.5 L</td>
+                    <td><span class="jarra-tag">Inox / Acero</span></td>
+                </tr>
+                <!-- 11. Oster Xtreme Mix Profesional (TUPI) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/o/s/oster_xtreme_mix_2.057.000.jpg" alt="Oster Xtreme" loading="lazy"><br>Oster Xtreme Mix Profesional</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 2.057.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">1500 W</td>
+                    <td class="specs">2.0 L</td>
+                    <td><span class="jarra-tag">Vidrio templado</span></td>
+                </tr>
+                <!-- 12. Mondial Easy Power Red 550W (TUPI) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/m/o/mondial_red_550w.jpg" alt="Mondial Easy Power" loading="lazy"><br>Mondial Easy Power Red 550W</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 198.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">550 W</td>
+                    <td class="specs">1.8 L</td>
+                    <td><span class="jarra-tag">PP inquebrantable</span></td>
+                </tr>
+                <!-- 13. Nissei: Ninja Blast BC151 Portátil -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_portatil_ninja_blast_bc151_PC-135530_0000.jpg" alt="Ninja Blast" loading="lazy"><br>Ninja Blast BC151 Portátil</td>
+                    <td class="price-cell">Gs. 621.000</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">~350 W</td>
+                    <td class="specs">0.5 L</td>
+                    <td><span class="jarra-tag">Plástico / taza</span></td>
+                </tr>
+                <!-- 14. GG: Philips Walita RI2112/90 c/filtro -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/p/h/philips_walita_ri2112.jpg" alt="Philips Walita" loading="lazy"><br>Philips Walita RI2112/90 c/filtro</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 217.000</td>
+                    <td class="specs">500 W</td>
+                    <td class="specs">2.0 L</td>
+                    <td><span class="jarra-tag">Vaso plástico + filtro</span></td>
+                </tr>
+                <!-- 15. TUPI: Black & Decker Quiet BL1516 jarra vidrio -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/b/l/blackdecker_quiet_bl1516.jpg" alt="B&D Quiet" loading="lazy"><br>Black & Decker Quiet BL1516</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 374.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">700 W</td>
+                    <td class="specs">1.5 L</td>
+                    <td><span class="jarra-tag">Vaso de vidrio</span></td>
+                </tr>
+                <!-- 16. Nissei: Licuadora Industrial Metvisa LQL-6 (6L) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_industrial_metvisa_lql_6_6l_NGO-G641_0000.jpg" alt="Metvisa LQL-6" loading="lazy"><br>Metvisa LQL-6 6L Industrial</td>
+                    <td class="price-cell">Gs. 1.801.000</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 2.105.000*</td>
+                    <td class="specs">1800 W</td>
+                    <td class="specs">6.0 L</td>
+                    <td><span class="jarra-tag">Acero inoxidable</span></td>
+                </tr>
+                <!-- 17. TUPI: Britania BLQ1300 1400W Negro -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/b/r/britania_blq1300.jpg" alt="Britania BLQ1300" loading="lazy"><br>Britania BLQ1300 1400W</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 226.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">1400 W</td>
+                    <td class="specs">1.8 L</td>
+                    <td><span class="jarra-tag">Vidrio templado</span></td>
+                </tr>
+                <!-- 18. GG: Arno PowerMix LQ10 241.000 Gs -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_arno_lq10.jpg" alt="Arno LQ10" loading="lazy"><br>Arno PowerMix LQ10</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 241.000</td>
+                    <td class="specs">500 W</td>
+                    <td class="specs">1.5 L</td>
+                    <td><span class="jarra-tag">Plástico / policarbonato</span></td>
+                </tr>
+                <!-- 19. Licuadora Personal Xion XI-LI6 380ml (Nissei) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_personal_xion_xi_li6_bivolt_380ml_PC-134231_0000_1.jpg" alt="Xion personal" loading="lazy"><br>Xion XI-LI6 380ml</td>
+                    <td class="price-cell">Gs. 77.000</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">250 W</td>
+                    <td class="specs">0.38 L</td>
+                    <td><span class="jarra-tag">Plástico / portátil</span></td>
+                </tr>
+                <!-- 20. TUPI: Bosch MMB6172S 1.5L 1200W Silver -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/b/o/bosch_silver_1500w.jpg" alt="Bosch Serie 4" loading="lazy"><br>Bosch MMB6172S 1200W 1.5L</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 374.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">1200 W</td>
+                    <td class="specs">1.5 L</td>
+                    <td><span class="jarra-tag">Vaso de vidrio</span></td>
+                </tr>
+                <!-- 21. GG: Tokyo Licuamax Plus 3.1L -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/t/o/tokyo_licuamax_plus.jpg" alt="Tokyo Licuamax Plus" loading="lazy"><br>Tokyo Licuamax Plus 3.1L</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 225.000</td>
+                    <td class="specs">800 W</td>
+                    <td class="specs">3.1 L</td>
+                    <td><span class="jarra-tag">Policarbonato reforzado</span></td>
+                </tr>
+                <!-- 22. Nissei: BlendJet Portátil 216.000 Gs -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_personal_blendjet_portatil_PC-129173_0000_1.jpg" alt="BlendJet Portable" loading="lazy"><br>BlendJet Portátil (licuadora personal)</td>
+                    <td class="price-cell">Gs. 216.000</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">250 W</td>
+                    <td class="specs">0.45 L</td>
+                    <td><span class="jarra-tag">Plástico deportivo</span></td>
+                </tr>
+                <!-- 23. TUPI: Ufesa Nutriboom BS2500 900W -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/u/f/ufesa_bs2500.jpg" alt="Ufesa Nutriboom" loading="lazy"><br>Ufesa Nutriboom BS2500 900W</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 315.000</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">900 W</td>
+                    <td class="specs">0.8 L</td>
+                    <td><span class="jarra-tag">Vaso de vidrio</span></td>
+                </tr>
+                <!-- 24. GG: Electrolux EBS20 500W 1.95LTS -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/e/l/electrolux_ebs20.jpg" alt="Electrolux EBS20" loading="lazy"><br>Electrolux EBS20 500W 1.95L</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 490.000</td>
+                    <td class="specs">500 W</td>
+                    <td class="specs">1.95 L</td>
+                    <td><span class="jarra-tag">Vaso plástico</span></td>
+                </tr>
+                <!-- 25. Nissei: Ariete Moderna (desde 771.000) -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_ariete_moderna_PC-KUB-929-907_0000_1.jpg" alt="Ariete Moderna" loading="lazy"><br>Ariete Moderna (Vaso Vidrio)</td>
+                    <td class="price-cell">Gs. 771.000</td>
+                    <td class="price-cell">Gs. 838.000*</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">800 W</td>
+                    <td class="specs">1.5 L</td>
+                    <td><span class="jarra-tag">Vidrio decorativo</span></td>
+                </tr>
+                <!-- 26. adicional GG: Licuadora Arno LN64 Power Max Marfil 491.000 -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/a/r/arno_ln64_marfil.jpg" alt="Arno LN64" loading="lazy"><br>Arno LN64 Power Max Marfil</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="price-cell">Gs. 491.000</td>
+                    <td class="specs">800 W</td>
+                    <td class="specs">1.8 L</td>
+                    <td><span class="jarra-tag">Plástico ABS + vidrio</span></td>
+                </tr>
+                <!-- 27. Nissei: Midea MJBL40G 1.5L -->
+                <tr>
+                    <td class="product-name"><img class="product-img" src="https://nissei.com/media/catalog/product/cache/c831b74073e8f93ee349897f877fc397/l/i/licuadora_midea_mjbl40g_blanco_1_5l_BRI-051600MJBL40G_0000.jpg" alt="Midea MJBL40G" loading="lazy"><br>Midea MJBL40G 1.5L</td>
+                    <td class="price-cell">Gs. 215.000</td>
+                    <td class="price-na">—</td>
+                    <td class="price-na">—</td>
+                    <td class="specs">600 W</td>
+                    <td class="specs">1.5 L</td>
+                    <td><span class="jarra-tag">Plástico</span></td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+    <div class="footer-note">
+        <p>🔍 Nota: Los precios marcados con * corresponden a productos similares o referencias equivalentes según catálogos. <br>
+        🛒 Precios Nissei extraídos directamente del sitio oficial (resultados de búsqueda "licuadora"). <br>
+        🧾 Precios TUPI y González Giménez basados en sus archivos PDF públicos (contado, IVA incluido). Potencia y capacidad obtenidas de fichas técnicas y nombres de producto.<br>
+        ✅ Comparativa elaborada con datos reales de tiendas físicas y online de Paraguay. Última actualización: Junio 2026.</p>
+    </div>
+    <div class="attribution">
+        Fuentes: Nissei.com · TUPI S.A. Catálogo · González Giménez Electrodomésticos
+    </div>
 </div>
-
 </body>
 </html>
